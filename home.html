@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json"> <!-- Añadir esto -->
+
     <!-- Firebase SDK -->
     <script type="module">
         // Import Firebase and Firestore libraries
@@ -13,14 +15,13 @@
 
         // Firebase configuration
         const firebaseConfig = {
-  apiKey: "AIzaSyDOb9ejb9s7uu1yESiuSKas4kJJ7eX0qDM",
-  authDomain: "bdlogin-1b499.firebaseapp.com",
-  projectId: "bdlogin-1b499",
-  storageBucket: "bdlogin-1b499.appspot.com",
-  messagingSenderId: "108081575005",
-  appId: "1:108081575005:web:f2699abd7542fb8ee4c9b4"
-};
-
+            apiKey: "AIzaSyDOb9ejb9s7uu1yESiuSKas4kJJ7eX0qDM",
+            authDomain: "bdlogin-1b499.firebaseapp.com",
+            projectId: "bdlogin-1b499",
+            storageBucket: "bdlogin-1b499.appspot.com",
+            messagingSenderId: "108081575005",
+            appId: "1:108081575005:web:f2699abd7542fb8ee4c9b4"
+        };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
@@ -31,7 +32,7 @@
             const loginForm = document.querySelector('form');
             loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
+
                 // Obtener los valores de los inputs
                 const name = document.querySelector('#name').value; 
                 const password = document.querySelector('#password').value;
