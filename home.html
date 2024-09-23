@@ -5,20 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase and Firestore libraries
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyDOb9ejb9s7uu1yESiuSKas4kJJ7eX0qDM",
+  authDomain: "bdlogin-1b499.firebaseapp.com",
+  projectId: "bdlogin-1b499",
+  storageBucket: "bdlogin-1b499.appspot.com",
+  messagingSenderId: "108081575005",
+  appId: "1:108081575005:web:f2699abd7542fb8ee4c9b4"
+};
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Función para verificar usuarios
+        window.addEventListener('load', () => {
+            const loginForm = document.querySelector('form');
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Obtener los valores de los inputs
+                const name = document.querySelector('#name').value; 
+                const password = document.querySelector('#password').value;
+
+                try {
+                    // Referencia al documento "UsuariosLogin" en la colección "Login"
+                    const docRef = doc(db, "Login", "Users_Login");
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data(); // Obtener los datos de Firestore
+                        
+                        // Verificar si el nombre de usuario y la contraseña coinciden
+                        if (userData.user === name && userData.password === password) {
+                            // Redirigir a otra página si los datos son correctos
+                            window.location.href = "./body/index.html"; // Cambia "nueva_pagina.html" por la ruta de la página a la que quieras redirigir
+                        } else {
+                            alert("Usuario o contraseña incorrectos.");
+                        }
+                    } else {
+                        alert("No se encontró el usuario.");
+                    }
+                } catch (error) {
+                    console.error("Error al obtener los datos:", error);
+                    alert("Hubo un problema al verificar el usuario.");
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form action="#" method="POST">
+        <form>
             <div class="input-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" name="username" required>
+                <label for="name">Nombre de Usuario</label>
+                <input type="text" id="name" required>
             </div>
             <div class="input-group">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" required>
             </div>
-            <button type="submit" class="btn">Entrar</button>
+            <button type="submit" class="btn">Iniciar Sesión</button>
         </form>
     </div>
 </body>
