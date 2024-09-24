@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json"> <!-- Añadir esto -->
+    <link rel="manifest" href="manifest.json">
 
     <!-- Firebase SDK -->
     <script type="module">
-        // Import Firebase and Firestore libraries
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDOb9ejb9s7uu1yESiuSKas4kJJ7eX0qDM",
             authDomain: "bdlogin-1b499.firebaseapp.com",
@@ -23,38 +21,41 @@
             appId: "1:108081575005:web:f2699abd7542fb8ee4c9b4"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Función para verificar usuarios
         window.addEventListener('load', () => {
             const loginForm = document.querySelector('form');
             loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
-                // Obtener los valores de los inputs
                 const name = document.querySelector('#name').value; 
                 const password = document.querySelector('#password').value;
 
                 try {
-                    // Referencia al documento "UsuariosLogin" en la colección "Login"
-                    const docRef = doc(db, "Login", "Users_Login");
-                    const docSnap = await getDoc(docRef);
+                    // Verificar los dos tipos de usuario
+                    const userTypes = ['Users_Login', 'User_Lider'];
+                    let userFound = false;
 
-                    if (docSnap.exists()) {
-                        const userData = docSnap.data(); // Obtener los datos de Firestore
-                        
-                        // Verificar si el nombre de usuario y la contraseña coinciden
-                        if (userData.user === name && userData.password === password) {
-                            // Redirigir a otra página si los datos son correctos
-                            window.location.href = "./body/index.html"; // Cambia "nueva_pagina.html" por la ruta de la página a la que quieras redirigir
-                        } else {
-                            alert("Usuario o contraseña incorrectos.");
+                    for (const userType of userTypes) {
+                        const docRef = doc(db, "Login", userType);
+                        const docSnap = await getDoc(docRef);
+
+                        if (docSnap.exists()) {
+                            const userData = docSnap.data();
+                            if (userData.user === name && userData.password === password) {
+                                userFound = true;
+                                // Redirigir según el tipo de usuario
+                                window.location.href = userType === 'Users_Login' ? "./body/index.html" : "./body/indexlider.html";
+                                break;
+                            }
                         }
-                    } else {
-                        alert("No se encontró el usuario.");
                     }
+
+                    if (!userFound) {
+                        alert("Usuario o contraseña incorrectos.");
+                    }
+
                 } catch (error) {
                     console.error("Error al obtener los datos:", error);
                     alert("Hubo un problema al verificar el usuario.");
@@ -92,5 +93,4 @@
         });
     }
 </script>
-
 </html>
