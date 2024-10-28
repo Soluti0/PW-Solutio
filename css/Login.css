@@ -1,6 +1,5 @@
-body{
+body {
     font-family: Arial, sans-serif;
-    /*margin: 28px;*/
     margin: 0;
     padding: 0;
     background-image: url('../img/Nubes1.jpg');
@@ -11,30 +10,32 @@ body{
     height: 100vh;
 }
 
-.Login-box{
+/* Caja del formulario */
+.Login-box {
     width: 420px;
-    height: auto;
     background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
     color: #fff;
+    position: absolute;
     top: 50%;
     left: 50%;
-    position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 40px;
     border-radius: 20px;
 }
 
+/* Logo del formulario */
 .Login-box .Logo {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     position: absolute;
     top: -50px;
-    left: calc(50% - 50px);
+    left: calc(50% - 60px); /* Centrado */
 }
 
-.Login-box h1{
+/* Título del formulario */
+.Login-box h1 {
     margin: 0;
     padding: 0 0 20px;
     text-align: center;
@@ -42,14 +43,14 @@ body{
     font-family: cursive;
 }
 
-.Login-box label{
-    margin: 0;
-    padding: 0;
+/* Estilos para etiquetas e inputs */
+.Login-box label {
     font-weight: bold;
     display: block;
 }
 
-.Login-box input[type="text"] {
+.Login-box input[type="text"],
+.Login-box input[type="password"] {
     width: 100%; 
     padding: 10px; 
     margin-bottom: 20px; 
@@ -59,18 +60,8 @@ body{
     font-size: 14px;
 }
 
-.Login-box input[type="password"]{
-    width: 100%; 
-    padding: 10px; 
-    margin-bottom: 20px; 
-    box-sizing: border-box; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.des{
-
+/* Descripción */
+.des {
     color: #ece3e3; 
     text-align: center; 
     margin-top: -10px; 
@@ -78,7 +69,8 @@ body{
     font-family: cursive;
 }
 
-.btn-acd{
+/* Botón */
+.btn-acd {
     display: block; 
     margin: 20px auto; 
     padding: 10px 20px; 
@@ -88,9 +80,68 @@ body{
     border-radius: 5px; 
     font-size: 14px; 
     cursor: pointer; 
-    text-align: center; 
+    text-align: center;
 }
 
-.btn-acd:hover{
+.btn-acd:hover {
     background-color: #789eb8;
+}
+
+/* Media Queries */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .Login-box {
+        width: 90%;
+        padding: 50px 20px;
+    }
+    
+    .Login-box .Logo {
+        width: 100px;
+        height: 100px;
+        top: -45px;
+        left: calc(50% - 50px);
+    }
+    
+    .Login-box h1 {
+        font-size: 22px;
+    }
+    
+    .btn-acd {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .Login-box {
+        width: 95%;
+        padding: 30px 15px;
+    }
+    
+    .Login-box .Logo {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+        left: calc(50% - 40px);
+    }
+    
+    .Login-box h1 {
+        font-size: 20px;
+    }
+
+    .Login-box input[type="text"],
+    .Login-box input[type="password"] {
+        font-size: 13px;
+    }
+
+    .des {
+        font-size: 13px;
+    }
+
+    .btn-acd {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
 }
