@@ -7,10 +7,68 @@
     <link rel="stylesheet" href="../PW-Solutio/css/Login.css">
     <link rel="manifest" href="manifest.json">
     <link rel="ico" href="../PW-Solutio/img/Logo.ico">
-    <script type="module" src="../PW-Solutio/js/Firebase-Auth.js"></script>
+    <!-- <script type="module" src="../PW-Solutio/js/Firebase-Auth.js"></script> -->
+
     <script src="../PW-Solutio/js/service-worker.js"></script>
 
+        <!-- Firebase SDK -->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    
+            const firebaseConfig = {
+                apiKey: "AIzaSyDOb9ejb9s7uu1yESiuSKas4kJJ7eX0qDM",
+                authDomain: "bdlogin-1b499.firebaseapp.com",
+                projectId: "bdlogin-1b499",
+                storageBucket: "bdlogin-1b499.appspot.com",
+                messagingSenderId: "108081575005",
+                appId: "1:108081575005:web:f2699abd7542fb8ee4c9b4"
+            };
+    
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+    
+            window.addEventListener('load', () => {
+                const loginForm = document.querySelector('form');
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+    
+                    const name = document.querySelector('#name').value; 
+                    const password = document.querySelector('#password').value;
+    
+                    try {
+                        // Verificar los dos tipos de usuario
+                        const userTypes = ['Users_Login', 'User_Lider'];
+                        let userFound = false;
+    
+                        for (const userType of userTypes) {
+                            const docRef = doc(db, "Login", userType);
+                            const docSnap = await getDoc(docRef);
+    
+                            if (docSnap.exists()) {
+                                const userData = docSnap.data();
+                                if (userData.user === name && userData.password === password) {
+                                    userFound = true;
+                                    // Redirigir según el tipo de usuario
+                                    window.location.href = userType === 'Users_Login' ? "./body/index.html" : "./body/indexlider.html";
+                                    break;
+                                }
+                            }
+                        }
+    
+                        if (!userFound) {
+                            alert("Usuario o contraseña incorrectos.");
+                        }
+    
+                    } catch (error) {
+                        console.error("Error al obtener los datos:", error);
+                        alert("Hubo un problema al verificar el usuario.");
+                    }
+                });
+            });
+            </script>
 </head>
+
 <body>
 
     <div class="Login-box">
