@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    /*margin: 28px;*/
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/Nubes4.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    background: linear-gradient(to right,  rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    gap: 10px;
+}
+
+header .LogoI{
+    max-height: 120px;
+}
+
+header h1.Title {
+    margin: 0;
+    font-size: 24px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.GridM h3{
+    color: #ccc; 
+    font-size: 16px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.GridM h3:hover{
+    /*background-color: #ff1493;*/
+    border-radius: 6px;
+    background: linear-gradient(to left,  rgba(255, 20, 147 , 0.8), rgba(199, 49, 129, 0.8));;
+}
+
+.GridM h3 i {
+    color: #ff1493; 
+    font-size: 1px;
+    font-size: 16px;
+    
+}
+
+.GridM,.GridS,.GridI{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    max-height: 250px;
+}
+
+.GridS h3{
+    color: #ccc; 
+    font-size: 16px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.GridS h3:hover{
+    /*background-color: #1fdb4c; */
+    border-radius: 6px;
+    background: linear-gradient(to left,  rgba(31, 219, 76  , 0.8), rgba(65, 194, 95, 0.8));;
+}
+
+.GridS h3 i{
+    color: #1fdb4c; 
+    font-size: 1px;
+    font-size: 16px;
+}
+
+.GridI h3{
+    color: #ccc; 
+    font-size: 16px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.GridI h3:hover{
+    /*background-color: #f56117;*/
+    border-radius: 6px;
+    background: linear-gradient(to left,  rgba(245, 97, 23 , 0.8), rgba(192, 108, 65, 0.8));;
+}
+
+.GridI h3 i{
+    color: #f56117; 
+    font-size: 1px;
+    font-size: 16px;
+    
+}
+
+.MCC{
+    /*background-color: #2ea4f3;*/
+    background: linear-gradient(to left,  rgba(12, 192, 223 , 0.8), rgba(22, 109, 124, 0.8));
+    color: black;
+    font-size: 18px;
+    font-family: cursive;
+}
+
+
+main {
+    padding: 2em;
+    margin: 16px;
+    color: white;
+}
+
+.Manuales,
+.Scripts,
+.Insumos {
+    padding: 35px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+    background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
+    border-radius: 15px;
+}
+
+.GridM,.GridS,.GridI{
+    padding: 35px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+    background: linear-gradient(to left, rgba(69, 69, 75, 0.8), rgba(101, 101, 124, 0.8));
+    border-radius: 15px;
+}
+
+.TMA,.TMS,.TIP{
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 10px 0; 
+    text-align: center; 
+    border-radius: 10px;
+    box-sizing: border-box;
+} 
+
+footer {
+    background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
