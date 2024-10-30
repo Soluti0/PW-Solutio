@@ -9,7 +9,6 @@ body {
     background-size: cover;
 }
 
-/* Header */
 header {
     background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
     color: white;
@@ -29,7 +28,6 @@ header h1.Title {
     text-align: left;
 }
 
-/* Marquee */
 .MCC {
     background: linear-gradient(to left, rgba(12, 192, 223, 0.8), rgba(22, 109, 124, 0.8));
     color: black;
@@ -38,7 +36,6 @@ header h1.Title {
     padding: 10px 0;
 }
 
-/* Contenido Principal */
 main {
     padding: 2em;
     color: white;
@@ -47,7 +44,6 @@ main {
     gap: 20px;
 }
 
-/* Manuales, Scripts, Insumos */
 .Manuales, .Scripts, .Insumos {
     padding: 20px;
     background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
@@ -60,7 +56,6 @@ main {
     padding: 10px 0;
 }
 
-/* Grids */
 .GridM, .GridS, .GridI {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -117,7 +112,30 @@ main {
     
 }
 
-/* Footer */
+.chatbtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;       
+    height: 80px;      
+    border-radius: 50%;
+    background-color: #0cc0df;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;   
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.chatbtn:hover {
+    background-color: #000000;
+    transform: scale(1.1); /* Aumenta el tamaño al pasar por el objeto */
+}
+
 footer {
     background: linear-gradient(to right, rgba(13, 13, 15, 0.8), rgba(2, 2, 5, 0.8));
     color: white;
@@ -125,7 +143,6 @@ footer {
     padding: 1em;
 }
 
-/* Media Queries */
 
 /* Tablets */
 @media (max-width: 768px) {
