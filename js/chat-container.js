@@ -1,18 +1,13 @@
-// Función para mostrar el chat
-function toggleChat() {
+// Función para mostrar el chat al cargar la página
+function showChat() {
     const chatContainer = document.getElementById("ChatContainer");
-    
-    // Si el contenedor está oculto, lo mostramos y cargamos el script
-    if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-        chatContainer.style.display = "block";
-        
-        // Verifica si el script de Stack AI ya está cargado
-        if (!document.getElementById("stackAiScript")) {
-            loadStackAIScript();
-        }
-    } else {
-        // Oculta el contenedor si ya está visible
-        chatContainer.style.display = "none";
+
+    // Muestra el contenedor
+    chatContainer.style.display = "block";
+
+    // Verifica si el script de Stack AI ya está cargado
+    if (!document.getElementById("stackAiScript")) {
+        loadStackAIScript();
     }
 }
 
@@ -25,5 +20,5 @@ function loadStackAIScript() {
     document.body.appendChild(script);
 }
 
-// Llama automáticamente a toggleChat() para mostrar el chat al cargar la página
-window.addEventListener("load", toggleChat);
+// Llama a showChat() al cargar la página
+window.addEventListener("load", showChat);
