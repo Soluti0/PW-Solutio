@@ -143,6 +143,10 @@ footer {
     padding: 1em;
 }
 
+.h3__git{
+    cursor: pointer;
+}
+
 
 /* Tablets */
 @media (max-width: 768px) {
